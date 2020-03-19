@@ -16,4 +16,6 @@ public:
     PointsGenerator(double minX, double maxX, double minY, double maxY);
     Points generatePoints(uint numberOfPoints);
     void setRange(double minX, double maxX, double minY, double maxY);
+    Range getRangeX() const;
+    Range getRangeY() const;
 };

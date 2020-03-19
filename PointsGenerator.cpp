@@ -23,6 +23,9 @@ void PointsGenerator::setRange(double minX, double maxX, double minY, double max
     rangeY.second = maxY;
 }
 
+Range PointsGenerator::getRangeX() const { return rangeX; }
+Range PointsGenerator::getRangeY() const { return rangeY; }
+
 /****************************/
 
 double PointsGenerator::generateRandomNumber(Range range)
@@ -36,6 +39,9 @@ double PointsGenerator::generateRandomNumber(Range range)
 
 Point PointsGenerator::generateOnePoint()
 {
+    // static double valueX = rangeX.first;
+    // double x = valueX;
+    // valueX += 0.5;
     double x = generateRandomNumber(rangeX);
     double y = generateRandomNumber(rangeY);
 
