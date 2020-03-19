@@ -1,7 +1,8 @@
 #include "PointsGenerator.hpp"
 #include <random>
 
-PointsGenerator::PointsGenerator(double min, double max) : range(min, max)
+PointsGenerator::PointsGenerator(double minX, double maxX, double minY, double maxY)
+    : rangeX(minX, maxX), rangeY(minY, maxY)
 {
 }
 
@@ -10,17 +11,21 @@ Points PointsGenerator::generatePoints(uint numberOfPoints)
     Points points;
     for (auto i = 0; i < numberOfPoints; i++)
         points.insert(generateOnePoint());
+
+    return points;
 }
 
-void PointsGenerator::setRange(double min, double max)
+void PointsGenerator::setRange(double minX, double maxX, double minY, double maxY)
 {
-    range.first = min;
-    range.second = max;
+    rangeX.first = minX;
+    rangeX.second = maxX;
+    rangeY.first = minY;
+    rangeY.second = maxY;
 }
 
 /****************************/
 
-double PointsGenerator::generateRandomNumber()
+double PointsGenerator::generateRandomNumber(Range range)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -31,8 +36,8 @@ double PointsGenerator::generateRandomNumber()
 
 Point PointsGenerator::generateOnePoint()
 {
-    double x = generateRandomNumber();
-    double y = generateRandomNumber();
+    double x = generateRandomNumber(rangeX);
+    double y = generateRandomNumber(rangeY);
 
     return Point(x,y);
 }

@@ -7,11 +7,13 @@ using Range = std::pair<double, double>;
 
 class PointsGenerator
 {
-    Range range;
-    double generateRandomNumber();
+    Range rangeX;
+    Range rangeY;
+    double generateRandomNumber(Range range);
     Point generateOnePoint();
+
 public:
-    PointsGenerator(double min, double max);
+    PointsGenerator(double minX, double maxX, double minY, double maxY);
     Points generatePoints(uint numberOfPoints);
-    void setRange(double min, double max);
+    void setRange(double minX, double maxX, double minY, double maxY);
 };
