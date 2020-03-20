@@ -1,8 +1,9 @@
 #include "PointsGenerator.hpp"
 #include <random>
+#include <iostream>
 
-PointsGenerator::PointsGenerator(double minX, double maxX, double minY, double maxY)
-    : rangeX(minX, maxX), rangeY(minY, maxY)
+PointsGenerator::PointsGenerator(PointsGenerator::Settings settings_)
+    : settings(settings_)
 {
 }
 
@@ -15,35 +16,31 @@ Points PointsGenerator::generatePoints(uint numberOfPoints)
     return points;
 }
 
-void PointsGenerator::setRange(double minX, double maxX, double minY, double maxY)
+void PointsGenerator::setNewSettings(PointsGenerator::Settings settings_)
 {
-    rangeX.first = minX;
-    rangeX.second = maxX;
-    rangeY.first = minY;
-    rangeY.second = maxY;
+    settings = settings_;
 }
-
-Range PointsGenerator::getRangeX() const { return rangeX; }
-Range PointsGenerator::getRangeY() const { return rangeY; }
 
 /****************************/
 
-double PointsGenerator::generateRandomNumber(Range range)
+double PointsGenerator::generateRandomNumber(double min, double max)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<double> dis(range.first, range.second);
+    std::uniform_real_distribution<double> dis(min, max);
 
     return dis(gen);
 }
 
 Point PointsGenerator::generateOnePoint()
 {
-    // static double valueX = rangeX.first;
-    // double x = valueX;
-    // valueX += 0.5;
-    double x = generateRandomNumber(rangeX);
-    double y = generateRandomNumber(rangeY);
+    static double valueX = settings.minX;
+    double x = valueX;
+    valueX += 0.5;
+
+    double y = generateRandomNumber(settings.minY, settings.maxY) * exp;
+
+    std::cout << x << " " << y << std::endl;
 
     return Point(x,y);
 }

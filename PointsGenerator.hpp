@@ -3,19 +3,20 @@
 
 using Point = std::pair<double, double>;
 using Points = std::map<double, double>;
-using Range = std::pair<double, double>;
 
 class PointsGenerator
 {
-    Range rangeX;
-    Range rangeY;
-    double generateRandomNumber(Range range);
+    struct Settings
+    {
+        double minX, step;
+        double minY, maxY;
+    } settings;
+    
+    double generateRandomNumber(double min, double max);
     Point generateOnePoint();
 
 public:
-    PointsGenerator(double minX, double maxX, double minY, double maxY);
+    PointsGenerator(Settings settings_);
     Points generatePoints(uint numberOfPoints);
-    void setRange(double minX, double maxX, double minY, double maxY);
-    Range getRangeX() const;
-    Range getRangeY() const;
+    void setNewSettings(Settings settings_);
 };
