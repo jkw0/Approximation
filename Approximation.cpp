@@ -2,11 +2,11 @@
 #include <cmath>
 #include <iostream>
 
-Approximation::Approximation(double minX, double maxX, double minY, double maxY, uint numberOfPoints_)
-    : generator({minX, maxX, minY, maxY}), numberOfPoints(numberOfPoints_)
+Approximation::Approximation(double minX, double maxX, double step)
+    : generator()
 {
-    //points = generator.generatePoints(numberOfPoints);
-    points = generator.generateDataset(minX, 0.1, numberOfPoints);
+    points = generator.generateDataset(minX, maxX, step, 2, -0.2, 0.01);
+    numberOfPoints = points.size();
 }
 
 double Approximation::getA() const
@@ -34,7 +34,7 @@ void Approximation::calculate()
     double a1 = 0, a0 = 0;
     a1 = (numberOfPoints*sumXiZi - sumXi*sumZi) / (numberOfPoints*sumXiSq - sumXi*sumXi);
     a0 = sumZi/numberOfPoints - a1*sumXi/numberOfPoints;
-    
+
     a = exp(a0);
     b = a1;
 }

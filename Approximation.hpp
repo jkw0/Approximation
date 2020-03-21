@@ -9,7 +9,7 @@ class Approximation
     uint numberOfPoints;
 
 public:
-    Approximation(double minX, double maxX, double minY, double maxY, uint numberOfPoints_);
+    Approximation(double minX, double maxX, double step);
     void calculate();
     double getA() const;
     double getB() const;

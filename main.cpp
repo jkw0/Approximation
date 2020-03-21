@@ -4,8 +4,7 @@
 
 int main()
 {
-    //Approximation app(0.0, 20.0, 3.0, 400.0, 50); <3
-    Approximation app(0.0, 20.0, 3.0, 400.0, 100);
+    Approximation app(0.0, 5.0, 0.2);
 
     app.calculate();
 
