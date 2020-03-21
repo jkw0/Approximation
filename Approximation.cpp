@@ -5,7 +5,7 @@
 Approximation::Approximation(double minX, double maxX, double step)
     : generator()
 {
-    points = generator.generateDataset(minX, maxX, step, 2, -0.2, 0.01);
+    points = generator.generateDataset(minX, maxX, step, 2, -0.2, 0.1);
     numberOfPoints = points.size();
 }
 

@@ -2,13 +2,13 @@
 #include <random>
 #include <iostream>
 
-Points PointsGenerator::generateDataset(double min, double max, double step, double coeffA, double coeffB, double coeffRandom)
+Points PointsGenerator::generateDataset(double min, double max, double step, double coefA, double coefB, double coefRandom)
 {
     Points points{};
 
     for(double x = min; x <= max ; x += step )
     {
-        double y = coeffA*exp(coeffB*x) + coeffRandom*generateRandomNumber(minRandom, maxRandom);
+        double y = coefA*exp(coefB*x) + coefRandom*generateRandomNumber(min, max);
         points.insert({x,y});
     }
 
