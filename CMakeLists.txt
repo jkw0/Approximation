@@ -4,7 +4,7 @@ project(Approximation VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
-add_executable(Approximation main.cpp PointsGenerator.cpp Approximation.cpp)
+add_executable(Approximation main.cpp PointsGenerator.cpp Approximation.cpp Spline.cpp)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
