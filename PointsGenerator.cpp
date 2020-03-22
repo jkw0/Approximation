@@ -9,6 +9,7 @@ Points PointsGenerator::generateDataset(double min, double max, double step, dou
     for(double x = min; x <= max ; x += step )
     {
         double y = coefA*exp(coefB*x) + coefRandom*generateRandomNumber(min, max);
+        std::cout << x << " " << y << std::endl;
         points.insert({x,y});
     }
 

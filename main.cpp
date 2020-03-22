@@ -1,14 +1,12 @@
 #include "PointsGenerator.hpp"
 #include "Approximation.hpp"
-#include <iostream>
 
 int main()
 {
-    Approximation app(0.0, 15.0, 0.2);
+    Approximation app(0.0, 5.0, 0.5);
 
     app.calculate();
-
-    std::cout << app.getA() << " " << app.getB() << std::endl;
+    app.printCoefficients();
 
     return 0;
 }

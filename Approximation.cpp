@@ -9,14 +9,9 @@ Approximation::Approximation(double minX, double maxX, double step)
     numberOfPoints = points.size();
 }
 
-double Approximation::getA() const
+void Approximation::printCoefficients() const
 {
-    return a;
-}
-
-double Approximation::getB() const
-{
-    return b;
+    std::cout << "a = " << a.at(0) << " b = " << b.at(0) << std::endl;;
 }
 
 void Approximation::calculate()
@@ -35,6 +30,6 @@ void Approximation::calculate()
     a1 = (numberOfPoints*sumXiZi - sumXi*sumZi) / (numberOfPoints*sumXiSq - sumXi*sumXi);
     a0 = sumZi/numberOfPoints - a1*sumXi/numberOfPoints;
 
-    a = exp(a0);
-    b = a1;
+    a.push_back(exp(a0));
+    b.push_back(a1);
 }
